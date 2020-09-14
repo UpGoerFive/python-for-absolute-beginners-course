@@ -37,7 +37,7 @@ def main():
 
     record_win(player)
     print()
-    print(f"GAME OVER! {player} has won with the board: ")
+    print(Fore.LIGHTGREEN_EX + f"GAME OVER! {player} has won with the board: ")
     show_board(board)
     print()
 
@@ -145,27 +145,27 @@ def get_winning_sequences(board):
 
 def announce_turn(player):
     print()
-    print(f"It's {player}'s turn. Here's the board:")
-    print()
+    print(Fore.YELLOW + f"It's {player}'s turn. Here's the board:")
+    print(Fore.RESET)
     log(f"{player}'s turn.")
 
 
 def show_board(board):
     for row in board:
-        print(Fore.LIGHTBLUE_EX + '| ', end='')
+        print(Fore.BLUE + '| ', end='')
         for cell in row:
             symbol = cell if cell is not None else "_"
             if symbol == "Y":
-                print(Fore.YELLOW + 'O', Fore.RESET, end=" | ")
+                print(Fore.YELLOW + u'\u25cf', end=Fore.BLUE + ' | ')
             elif symbol == "R":
-                print(Fore.Red + 'O', Fore.RESET, end=" | ")
+                print(Fore.RED + u'\u25cf', end=Fore.BLUE + ' | ')
             else:
-                print(symbol, Fore.RESET)
-        print()
+                print(symbol, end=" | ")
+        print(Back.RESET)
 
 
 def choose_column(board, symbol):
-    column = int(input("Choose a column: "))
+    column = int(input(Fore.GREEN + "Choose a column: "))
 
     column -= 1
 
